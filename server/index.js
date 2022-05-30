@@ -2,8 +2,10 @@ const express = require("express");
 const axios = require('axios').default;
 const { Client } = require("@googlemaps/google-maps-services-js");
 require('dotenv').config()
-
+const cors = require('cors')
 const app = express();
+
+app.use(cors())
 
 app.get("/nearby/:lat/:lng/:page", (req, res) => {
 
@@ -16,7 +18,7 @@ app.get("/nearby/:lat/:lng/:page", (req, res) => {
     client
         .placesNearby({
             params: {
-                // 37.40, -122.08
+                // Test coords: 37.40, -122.08 Palo Alto CA
                 location: { lat, lng },
                 radius: 200,
                 key: process.env.GOOGLE_MAPS_API_KEY,
