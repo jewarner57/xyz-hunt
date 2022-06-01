@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300&family=Lobster&family=Roboto:wght@100;300;400&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
 .List {
     display: flex;
     flex-direction: column;
     max-width: 600px;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .ListItem {
@@ -17,11 +23,34 @@
     margin-right: 15px;
 }
 
-.ListItem>p {
-    margin-bottom: 10px;
+.ListItemDetails>p,
+.ListItemDetails>a {
+    margin: 0;
+    text-align: left;
+}
+
+.ListItemDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.itemName {
+    font-size: 1.2em;
+}
+
+.itemAddress {
+    font-size: 0.9em;
+    text-decoration: underline;
+    color: black;
 }
 
 .errorText {
-    font-size: 1.2em;
+    font-size: 1.4em;
     color: rgb(227, 82, 56);
+}
+
+.loadingText {
+    font-size: 1.4em;
+    margin-top: 15px;
 }
