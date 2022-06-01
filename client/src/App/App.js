@@ -9,7 +9,7 @@ function App() {
   const getListOfPlaces = async (e) => {
     e.preventDefault()
 
-    const res = await fetch(`${process.env.REACT_APP_API_URL}/nearby/37.40/-122.08/50`)
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/nearby/37.40/-122.08`)
     const content = await res.json();
 
     console.log(content)
