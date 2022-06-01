@@ -1,0 +1,27 @@
+.List {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.ListItem {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid gray;
+}
+
+.ListItem>h1 {
+    margin-right: 15px;
+}
+
+.ListItem>p {
+    margin-bottom: 10px;
+}
+
+.errorText {
+    font-size: 1.2em;
+    color: rgb(227, 82, 56);
+}

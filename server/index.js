@@ -58,7 +58,7 @@ async function getPlaces(client, lat, lng, radius, pageToken = undefined) {
                 timeout: 1000, // milliseconds
             })
 
-        console.log("HAS NEXT PAGE: ", response.data.next_page_token)
+        // console.log("HAS NEXT PAGE: ", response.data.next_page_token)
         result = response.data
     }
     catch (err) {
