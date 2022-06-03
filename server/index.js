@@ -18,7 +18,7 @@ app.get("/nearby/:lat/:lng/:radius", async (req, res) => {
     const lng = req.params.lng
     const radius = req.params.radius
 
-    let counter = 0
+    let maxPageCounter = 0
     let nextPageToken = undefined
     let alphabet = { "a": "", "b": "", "c": "", "d": "", "e": "", "f": "", "g": "", "h": "", "i": "", "j": "", "k": "", "l": "", "m": "", "n": "", "o": "", "p": "", "q": "", "r": "", "s": "", "t": "", "u": "", "v": "", "w": "", "x": "", "y": "", "z": "" };
 
@@ -33,9 +33,9 @@ app.get("/nearby/:lat/:lng/:radius", async (req, res) => {
 
         alphabet = matchPlacesToLetters(places, alphabet)
 
-        counter += 1
+      maxPageCounter += 1
     }
-    while (counter <= 10 && nextPageToken);
+    while (maxPageCounter <= 10 && nextPageToken);
 
     return res.status(200).send(alphabet)
 
