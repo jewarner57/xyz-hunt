@@ -24,6 +24,10 @@ label {
   margin-top: 5px;
 }
 
+.geoLocateButton > .locationLoading {
+  animation: shake 1s ease-in-out infinite;
+}
+
 input {
   margin-bottom: 20px;
   border: 2px solid black;
@@ -62,4 +66,23 @@ button:disabled,
 button[disabled] {
   background-color: #cccccc;
   color: #666666;
+}
+
+input:disabled,
+input[disabled] {
+  background-color: #e2e2e2;
+}
+
+
+
+@keyframes shake {
+  25% {
+    transform: rotate(60deg);
+  }
+  75% {
+    transform: rotate(-60deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }

@@ -46,11 +46,30 @@ function HuntForm(props) {
 
   const getCurrentPosition = async (e) => {
     e.preventDefault();
+    setLocationCoords("")
     setLocationLoading(true)
-    navigator.geolocation.getCurrentPosition(function (position) {
-      setLocationCoords(`${position.coords.latitude} ${position.coords.longitude}`)
-      setLocationLoading(false)
-    })
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setLocationCoords(`${position.coords.latitude} ${position.coords.longitude}`)
+        setLocationLoading(false)
+      },
+      (err) => {
+        console.log(err)
+        if(err.code === 1) {
+          setLocationCoords("Please allow location access.")
+        }
+        else if (err.code === 3) {
+          setLocationCoords("Location search timed out.") 
+        }
+        else {
+          setLocationCoords("Location not found.") 
+        }
+        
+        setLocationLoading(false)
+      },
+      {timeout: 5000}
+    )
   }
 
   return (
@@ -61,7 +80,7 @@ function HuntForm(props) {
         <div className="locateContainer">
           <input id="location" required={true} disabled={locationLoading} value={locationCoords} onChange={(e) => setLocationCoords(e.target.value)} />
           <div onClick={(e) => getCurrentPosition(e)} className="geoLocateButton">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 20"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z" /></svg>
+            <svg className={locationLoading ? "locationLoading" : ""} xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 20"><path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z" /></svg>
           </div>
         </div>
         {/* Radius input */}
