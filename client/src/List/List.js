@@ -1,13 +1,10 @@
 import './List.css';
-import { useState } from 'react'
-import LoadingCircle from '../LoadingCircle/LoadingCircle';
 
 function List(props) {
-    const { placeList, loading, err } = props
+    const { placeList } = props
 
     return (
         <div>
-            {!loading ?
                 <div className="List">
                     {placeList.length > 0 ? placeList.map((item) => {
                         return (
@@ -15,7 +12,7 @@ function List(props) {
                                 <h1>{item.letter.toUpperCase()}:</h1>
                                 <div className="ListItemDetails">
                                     <p className="itemName">{item.name || "-"}</p>
-                                    <a href={`https://maps.google.com/?ll=${item.lat},${item.lng}`} target="_blank" className="itemAddress">{item.address}</a>
+                              <a href={`https://maps.google.com/?ll=${item.lat},${item.lng}`} rel="noreferrer" target="_blank" className="itemAddress">{item.address}</a>
                                 </div>
                             </div>
                         )
@@ -23,14 +20,7 @@ function List(props) {
                         :
                         null
                     }
-                </div>
-                :
-                <div>
-                    <LoadingCircle />
-                    <p className='loadingText'>Loading...</p>
-                </div>
-            }
-            {err ? <p className="errorText">Error: {err}</p> : null}
+                </div>     
         </div>
     );
 }
