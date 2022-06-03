@@ -4,7 +4,7 @@ import LoadingCircle from '../LoadingCircle/LoadingCircle';
 
 function HuntForm(props) {
   const { setPlaceList } = props
-  const [radius, setRadius] = useState(200)
+  const [radius, setRadius] = useState(20)
   const [loading, setLoading] = useState(false)
   const [locationLoading, setLocationLoading] = useState(false)
   const [locationCoords, setLocationCoords] = useState("")
@@ -18,9 +18,11 @@ function HuntForm(props) {
 
     const lat = locationCoords.split(" ")[0]
     const lng = locationCoords.split(" ")[1]
+    const radiusInMeters = 1609.34 * radius
 
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/nearby/${lat}/${lng}/${radius}`)
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/nearby/${lat}/${lng}/${radiusInMeters
+}`)
       const content = await res.json();
 
       // Extract letters and place names from response
