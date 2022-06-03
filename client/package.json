@@ -1,5 +1,6 @@
 {
-  "name": "client",
+  "name": "xyzhuntgenerator",
+  "homepage": "https://www.jonathanewarner.com/xyz-hunt/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
